@@ -1,8 +1,10 @@
-import React, { useCallback } from "react";
-import { ICard } from "../interface/interface";
+import React, {useCallback} from "react";
+import {ICard} from "../interface/interface";
 import calendar from "../assets/calendar.png";
 import rightImg from "../assets/ArrowRight.png"
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import {Box} from "@mui/material";
+import {AllWidth, CStyle, STitle, TLink} from "../styles/mui-custom";
 
 interface CardProps {
     card: ICard;
@@ -32,26 +34,23 @@ const Card = (props: CardProps) => {
 
     const heightText = useCallback((string: string) => {
         return HeightLight(filter, string)
-    }, [ filter ]);
+    }, [filter]);
 
     return (
-        <div style={{width: "100%"}}>
+        <Box sx={AllWidth}>
             <img src={card.imageUrl} alt="img" style={{height: 217, width: "inherit"}}/>
-            <div style={{padding: 10}}>
-                <p><img src={calendar}/> {card.publishedAt}</p>
-                <p>{card.newsSite}</p>
-                <p>{heightText(title)}</p>
-                <p style={{
-                    height: "31px",
-                    overflow: "hidden",
-                    fontSize: "12px",
-                    lineHeight: "16px"
-                }}>{heightText(summary)}</p>
-                <Link to={`/cards/${card.id}/`} style={{textDecoration: "none", color: "black", fontWeight: "bold"}}>
-                    <div>Read more <img src={rightImg}/></div>
-                </Link>
-            </div>
-        </div>
+            <Box sx={CStyle}>
+                <Box><img src={calendar}/> {card.publishedAt}</Box>
+                <Box>{card.newsSite}</Box>
+                <Box>{heightText(title)}</Box>
+                <Box sx={STitle}>{heightText(summary)}</Box>
+                <Box sx={TLink}>
+                    <Link to={`/cards/${card.id}/`}>
+                    <Box>Read more <img src={rightImg}/></Box>
+                    </Link>
+                </Box>
+            </Box>
+        </Box>
     )
 }
 export default Card;

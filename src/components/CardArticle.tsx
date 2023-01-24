@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import ArrowLeft from "../assets/ArrowLeft.png"
-import { Link, useParams } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
-import { ICard } from "../interface/interface";
-import { Grid } from "@mui/material";
+import {ICard} from "../interface/interface";
+import {Box, Grid} from "@mui/material";
+import {ACard, AContent, Adec, Alink, ArtCon, ArtImg, Atext, TLink} from "../styles/mui-custom";
 
 
 const CardArticle = () => {
@@ -20,29 +21,28 @@ const CardArticle = () => {
 
     return (
         <>
-            <Grid container sx={{background: "white", zIndex: -1}}>
+            <Grid container sx={ArtCon}>
                 <Grid xs={12}>
                     <Grid>
-                        <div style={{
-                            width: '100%',
-                            display: 'block',
-                            height: '245px',
-                            background: `url(${card?.imageUrl}) 0 50%`
-                        }}/>
+                        <Box sx={ArtImg}
+                             style={{background: `url(${card?.imageUrl}) 0 50%`,}}></Box>
                     </Grid>
                 </Grid>
-                <Grid  sx={{marginBottom: 15, background: "white", minHeight: '100vh'}}>
-                    <Grid  sx={{boxShadow: 2, marginTop: -10, marginX: 10, background: 'white', minHeight: '100vh'}}>
-                        <p style={{textAlign: 'center', fontSize: 18}}>{card?.title}</p>
-                        <Grid sx={{margin: 10}}>
-                            <p>{card?.summary}</p>
+                <Grid sx={AContent}>
+                    <Grid sx={ACard}>
+                        <Box sx={Atext }>{card?.title}</Box>
+                        <Grid sx={Adec}>
+                            <Box>{card?.summary}</Box>
                         </Grid>
 
                     </Grid>
-                    <Grid xs={10} sx={{marginTop: 2, marginLeft: 20}}>
-                        <Link to='/' style={{textDecoration: "none", fontWeight: 500, color: 'black'}}>
-                            back to homepage <img src={ArrowLeft}/>
-                        </Link>
+                    <Grid xs={10} sx={Alink}>
+                        <Box sx={TLink}>
+                            <Link to='/' >
+                                back to homepage <img src={ArrowLeft}/>
+                            </Link>
+                        </Box>
+
                     </Grid>
                 </Grid>
 

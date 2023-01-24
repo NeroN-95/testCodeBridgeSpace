@@ -1,7 +1,6 @@
 import React from "react";
-import {FormControl, InputAdornment, TextField} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
-
+import {FormControl, InputAdornment, TextField} from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 interface SearchProps {
     handleChange: any;
 }

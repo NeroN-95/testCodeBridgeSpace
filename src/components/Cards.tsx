@@ -1,14 +1,15 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import TypeSearch from "./TypeSearch";
-import { ICard } from "../interface/interface";
-import { spaceAPI } from "../core/api";
+import {ICard} from "../interface/interface";
+import {spaceAPI} from "../core/api";
 import Card from "./Card";
-import { Grid } from "@mui/material";
+import {Grid} from "@mui/material";
 
 
 const Cards = () => {
-    const [ filter, setFilter ] = useState("");
-    const [ cards, setCards ] = useState<ICard[] | []>([]);
+    const [filter, setFilter] = useState("");
+    const [cards, setCards] = useState<ICard[] | []>([]);
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {value} = e.target
@@ -26,7 +27,7 @@ const Cards = () => {
             })
         }
         return cards;
-    }, [ filter, cards ]);
+    }, [filter, cards]);
 
     useEffect(() => {
         spaceAPI.getAllArticle().then((response) => setCards(response.data));
@@ -40,13 +41,19 @@ const Cards = () => {
             }}>
                 <TypeSearch handleChange={handleChange}/>
             </Grid>
-            {
-                filter ? <Grid sx={{margin: 8}}>
-                    <h3>Results: {items.length}
-                        <hr/>
-                    </h3>
-                </Grid> : null
-            }
+            <Grid container xs={12} sx={{
+                padding: " 0 60px",
+
+             }}>
+                {  filter ?
+                    <h3 style={{width: '100%'}}>Results: {items.length}<hr/></h3>
+                      : null && <hr/>
+
+                }
+
+            </Grid>
+
+
             <Grid container xs={12} style={{
                 padding: " 0 60px",
                 justifyContent: "space-between",
