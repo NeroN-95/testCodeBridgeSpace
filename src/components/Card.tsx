@@ -40,13 +40,13 @@ const Card = (props: CardProps) => {
         <Box sx={AllWidth}>
             <img src={card.imageUrl} alt="img" style={{height: 217, width: "inherit"}}/>
             <Box sx={CStyle}>
-                <Box><img src={calendar}/> {card.publishedAt}</Box>
+                <Box><img src={calendar} alt='img'/> {card.publishedAt}</Box>
                 <Box>{card.newsSite}</Box>
                 <Box>{heightText(title)}</Box>
                 <Box sx={STitle}>{heightText(summary)}</Box>
                 <Box sx={TLink}>
                     <Link to={`/cards/${card.id}/`}>
-                    <Box>Read more <img src={rightImg}/></Box>
+                    <Box>Read more <img src={rightImg} alt="img"/></Box>
                     </Link>
                 </Box>
             </Box>

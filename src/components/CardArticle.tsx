@@ -16,7 +16,7 @@ const CardArticle = () => {
         axios.get(`https://api.spaceflightnewsapi.net/v3/articles/${cardId}`)
             .then((response) =>
                 setCard(response.data));
-    }, []);
+    }, [cardId]);
 
 
     return (
@@ -39,7 +39,7 @@ const CardArticle = () => {
                     <Grid xs={10} sx={Alink}>
                         <Box sx={TLink}>
                             <Link to='/' >
-                                back to homepage <img src={ArrowLeft}/>
+                                back to homepage <img src={ArrowLeft} alt='img'/>
                             </Link>
                         </Box>
 
